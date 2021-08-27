@@ -1,0 +1,38 @@
+<style type="text/css">
+    body {
+        background: black;
+    }
+
+    .clock {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        color: #17D4FE;
+        font-size: 60px;
+        font-family: Orbitron;
+        letter-spacing: 7px;
+    }
+</style>
+
+<div id="MyClockDisplay" class="clock"></div>
+<input type="hidden" id="timeFiled">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.33/moment-timezone-with-data.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        var interval = setInterval(function() {
+            var momentNow = moment().tz("Australia/Adelaide");
+            var getCurrentDate = momentNow.format('DD-MM-YYYY');
+            var getCurrentTime = momentNow.format('hh:mm:ss A');
+            var getDay = momentNow.format('dddd');
+            // $('#currentDate').html(getCurrentDate);
+            $('#MyClockDisplay').html(getCurrentTime);
+            // $('#currentDateField').val(getCurrentDate);
+            $('#timeFiled').val(getCurrentTime);
+            // $('#currentDayField').val(getDay);
+        }, 100);
+    });
+</script>
